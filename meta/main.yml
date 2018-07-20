@@ -1,7 +1,8 @@
 galaxy_info:
+  role_name: docker-telegraf
   author: Pavlo Bashynskyi
   description: Configure and Deploy Telegraf Docker container
-  license: Apache
+  license: MIT
   min_ansible_version: 2.2
   platforms:
     - name: Ubuntu
