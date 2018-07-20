@@ -1,4 +1,4 @@
-Zookeeper Role
+Telegraf Role
 ==============
 
 Configure and start Telegraf in a docker container using the official image `telegraf:alpine`. 
