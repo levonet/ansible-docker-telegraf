@@ -2,14 +2,14 @@
 - name: Ensure docker volume mapping host directories exist
   file:
     state: directory
-    path: "{{ item | regex_replace('^(?P<host>.+):(?P<container>.+):(?P<mode>.+)', '\\g<host>') }}"
+    path: "{{ item | regex_replace('^(?P<host>.+):(?P<container>.+)(:(?P<mode>.+))?', '\\g<host>') }}"
   with_items:
     - "{{ docker_telegraf_directory_volumes }}"
 
 - name: Ensure docker volume mapping host file directories exist
   file:
     state: directory
-    path: "{{ item | regex_replace('^(?P<host>.+):(?P<container>.+):(?P<mode>.+)', '\\g<host>') | dirname }}"
+    path: "{{ item | regex_replace('^(?P<host>.+):(?P<container>.+)(:(?P<mode>.+))?', '\\g<host>') | dirname }}"
   with_items:
     - "{{ docker_telegraf_file_volumes + docker_telegraf_default_file_volumes }}"
 
