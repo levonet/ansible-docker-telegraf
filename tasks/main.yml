@@ -1,0 +1,38 @@
+---
+- name: Ensure docker volume mapping host directories exist
+  file:
+    state: directory
+    path: "{{ item | regex_replace('^(?P<host>.+):(?P<container>.+):(?P<mode>.+)', '\\g<host>') }}"
+  with_items:
+    - "{{ docker_telegraf_directory_volumes }}"
+
+- name: Ensure docker volume mapping host file directories exist
+  file:
+    state: directory
+    path: "{{ item | regex_replace('^(?P<host>.+):(?P<container>.+):(?P<mode>.+)', '\\g<host>') | dirname }}"
+  with_items:
+    - "{{ docker_telegraf_file_volumes + docker_telegraf_default_file_volumes }}"
+
+- name: Copy telegraf config
+  template:
+    src: telegraf.conf.j2
+    dest: "{{ docker_telegraf_home }}/config/telegraf.conf"
+
+- name: Remove existing {{ docker_telegraf_name }} container
+  docker_container:
+    name: "{{ docker_telegraf_name }}"
+    state: absent
+  when: docker_telegraf_remove_existing_container
+
+- name: Run docker telegraf container
+  docker_container:
+    name: "{{ docker_telegraf_name }}"
+    image: "{{ docker_telegraf_image }}"
+    restart_policy: always
+    ports: "{{ docker_telegraf_ports }}"
+    network_mode: "{{ docker_telegraf_network_mode }}"
+    networks: "{{ docker_telegraf_networks }}"
+    env: "{{ docker_telegraf_env }}"
+    volumes: "{{ docker_telegraf_volumes }}"
+    log_driver: "{{ docker_telegraf_log_driver }}"
+    log_options: "{{ docker_telegraf_log_options }}"
