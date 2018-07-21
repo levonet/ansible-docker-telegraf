@@ -27,13 +27,13 @@ Example Playbook
 ----------------
 
 ```yaml
-- hosts: {{ hosts }}
+- hosts: all
   become: yes
   become_method: sudo
   vars:
     influxdb_url: http://influxdb:8086
   roles:
-    - role: docker-telegraf
+    - role: levonet.docker_telegraf
       docker_telegraf_file_volumes:
         - /var/run/docker.sock:/var/run/docker.sock
         - /var/log/messages:/mnt/messages:ro
