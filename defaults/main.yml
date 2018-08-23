@@ -1,6 +1,7 @@
 docker_telegraf_name: telegraf
 docker_telegraf_image: telegraf:alpine
 docker_telegraf_remove_existing_container: yes
+docker_telegraf_periodic_restart: no
 docker_telegraf_home: "/opt/{{ docker_telegraf_name }}"
 
 docker_telegraf_network_mode:
