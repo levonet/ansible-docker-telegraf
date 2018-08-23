@@ -36,3 +36,11 @@
     volumes: "{{ docker_telegraf_volumes }}"
     log_driver: "{{ docker_telegraf_log_driver }}"
     log_options: "{{ docker_telegraf_log_options }}"
+
+- name: Set periodic restart container
+  cron:
+    name: docker-telegraf-restart
+    minute: 15
+    hour: 4
+    job: docker container restart {{ docker_telegraf_name }}
+  when: docker_telegraf_periodic_restart
