@@ -39,7 +39,7 @@
 
 - name: Set periodic restart container
   cron:
-    name: docker-telegraf-restart
+    name: docker-{{ docker_telegraf_name }}-restart
     minute: 15
     hour: 4
     job: docker container restart {{ docker_telegraf_name }}
