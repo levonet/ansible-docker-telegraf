@@ -1,5 +1,6 @@
 Telegraf Role
 ==============
+[![Build Status](https://travis-ci.org/levonet/ansible-docker-telegraf.svg?branch=master)](https://travis-ci.org/levonet/ansible-docker-telegraf)
 
 Configure and start Telegraf in a docker container using the official image `telegraf:alpine`. 
 
