@@ -1,0 +1,8 @@
+---
+- hosts: localhost
+  connection: local
+  roles:
+  - role: ../..
+    docker_telegraf_config: |
+      [global_tags]
+      [agent]
