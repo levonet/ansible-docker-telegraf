@@ -11,7 +11,7 @@ docker_telegraf_ports: []
 docker_telegraf_directory_volumes: []
 docker_telegraf_file_volumes: []
 docker_telegraf_default_file_volumes:
-  - "{{ docker_telegraf_home }}/config/telegraf.conf:/etc/telegraf/telegraf.conf:ro"
+  - "{{ docker_telegraf_home }}/telegraf.conf:/etc/telegraf/telegraf.conf:ro"
 docker_telegraf_volumes: "{{ docker_telegraf_directory_volumes + docker_telegraf_file_volumes + docker_telegraf_default_file_volumes }}"
 
 docker_telegraf_log_driver: json-file

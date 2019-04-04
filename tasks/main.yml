@@ -3,8 +3,7 @@
   file:
     state: directory
     path: "{{ item | regex_replace('^(?P<host>[^:]+):(?P<container>[^:]+):?(?P<mode>[^:]+)$', '\\g<host>') }}"
-  with_items:
-    - "{{ docker_telegraf_directory_volumes }}"
+  with_items: "{{ [ docker_telegraf_home ] + docker_telegraf_directory_volumes }}"
 
 - name: Copy telegraf config
   template:
