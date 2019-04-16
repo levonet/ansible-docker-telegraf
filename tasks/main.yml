@@ -8,7 +8,7 @@
 - name: Copy telegraf config
   template:
     src: telegraf.conf.j2
-    dest: "{{ docker_telegraf_home }}/config/telegraf.conf"
+    dest: "{{ docker_telegraf_home }}/telegraf.conf"
 
 - name: Remove existing {{ docker_telegraf_name }} container
   docker_container:
