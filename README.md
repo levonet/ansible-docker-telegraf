@@ -11,6 +11,8 @@ Role Variables
 - `docker_telegraf_name` (default: telegraf): This name used in name of home folder path and in name of container.
 - `docker_telegraf_image` (default: telegraf:alpine)
 - `docker_telegraf_periodic_restart` (default: no): Restart container at 4:15 AM everyday.
+- `docker_telegraf_periodic_restart_time_hour` (default: 4)
+- `docker_telegraf_periodic_restart_time_minute` (default: 15)
 - `docker_telegraf_directory_volumes` (optional): Mount folders into docker
 - `docker_telegraf_file_volumes` (optional): Mount files into docker
 - `docker_telegraf_ports` (optional)
