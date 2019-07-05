@@ -41,6 +41,7 @@ Example Playbook
         - /var/log/messages:/mnt/messages:ro
       docker_telegraf_config: |
         [global_tags]
+          inventory = "{{ inventory_hostname }}"
         [agent]
           interval = "30s"
           round_interval = true

@@ -7,31 +7,31 @@ galaxy_info:
   license: MIT
   min_ansible_version: 2.3
   platforms:
-    - name: Ubuntu
-      versions:
-        - all
-    - name: Debian
-      versions:
-        - all
-    - name: EL
-      versions:
-        - all
-    - name: Fedora
-      versions:
-        - all
-    - name: opensuse
-      versions:
-        - all
-    - name: SLES
-      versions:
-        - all
-    - name: MacOSX
-      versions:
-        - all
+  - name: Ubuntu
+    versions:
+    - all
+  - name: Debian
+    versions:
+    - all
+  - name: EL
+    versions:
+    - all
+  - name: Fedora
+    versions:
+    - all
+  - name: opensuse
+    versions:
+    - all
+  - name: SLES
+    versions:
+    - all
+  - name: MacOSX
+    versions:
+    - all
   cloud_platforms: []
-  galaxy_tags: 
-   - monitoring
-   - telegraf
-   - docker
+  galaxy_tags:
+  - monitoring
+  - telegraf
+  - docker
 
 dependencies: []
