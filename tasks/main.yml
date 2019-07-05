@@ -9,17 +9,20 @@
   template:
     src: telegraf.conf.j2
     dest: "{{ docker_telegraf_home }}/telegraf.conf"
+  register: copy_telegraf_config_result
 
 - name: Remove existing {{ docker_telegraf_name }} container
   docker_container:
     name: "{{ docker_telegraf_name }}"
     state: absent
-  when: docker_telegraf_remove_existing_container
+  when: docker_telegraf_remove_existing_container|bool
 
 - name: Run docker telegraf container
   docker_container:
     name: "{{ docker_telegraf_name }}"
     image: "{{ docker_telegraf_image }}"
+    pull: yes
+    restart: "{{ copy_telegraf_config_result.changed }}"
     restart_policy: always
     ports: "{{ docker_telegraf_ports }}"
     network_mode: "{{ docker_telegraf_network_mode }}"
@@ -32,7 +35,7 @@
 - name: Set periodic restart container
   cron:
     name: docker-{{ docker_telegraf_name }}-restart
-    minute: 15
-    hour: 4
+    minute: "{{ docker_telegraf_periodic_restart_time_minute }}"
+    hour: "{{ docker_telegraf_periodic_restart_time_hour }}"
     job: docker container restart {{ docker_telegraf_name }}
-  when: docker_telegraf_periodic_restart
+  when: docker_telegraf_periodic_restart|bool

@@ -2,6 +2,8 @@ docker_telegraf_name: telegraf
 docker_telegraf_image: telegraf:alpine
 docker_telegraf_remove_existing_container: yes
 docker_telegraf_periodic_restart: no
+docker_telegraf_periodic_restart_time_hour: "4"
+docker_telegraf_periodic_restart_time_minute: "15"
 docker_telegraf_home: "/opt/{{ docker_telegraf_name }}"
 
 docker_telegraf_network_mode:
@@ -11,7 +13,7 @@ docker_telegraf_ports: []
 docker_telegraf_directory_volumes: []
 docker_telegraf_file_volumes: []
 docker_telegraf_default_file_volumes:
-  - "{{ docker_telegraf_home }}/telegraf.conf:/etc/telegraf/telegraf.conf:ro"
+- "{{ docker_telegraf_home }}/telegraf.conf:/etc/telegraf/telegraf.conf:ro"
 docker_telegraf_volumes: "{{ docker_telegraf_directory_volumes + docker_telegraf_file_volumes + docker_telegraf_default_file_volumes }}"
 
 docker_telegraf_log_driver: json-file
