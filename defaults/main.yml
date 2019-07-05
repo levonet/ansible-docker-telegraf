@@ -1,6 +1,6 @@
 docker_telegraf_name: telegraf
 docker_telegraf_image: telegraf:alpine
-docker_telegraf_remove_existing_container: yes
+docker_telegraf_remove_existing_container: no
 docker_telegraf_periodic_restart: no
 docker_telegraf_periodic_restart_time_hour: "4"
 docker_telegraf_periodic_restart_time_minute: "15"
